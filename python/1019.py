@@ -1,9 +1,14 @@
-segundos_de_duracao_evento = int(input())
+# Ler a quantidade total de segundos
+tempo_total = int(input())
 
-h = int(segundos_de_duracao_evento / (60 * 60))
-total_segundos_h = h * 60 * 60
-m = int((segundos_de_duracao_evento - total_segundos_h) / 60)
-total_segundos_m = m * 60
-s = int(segundos_de_duracao_evento - total_segundos_h - total_segundos_m)
+# Calcular horas, minutos e segundos
+quantidade_segundos = [3600, 60, 1]
+resultado = []
 
-print(h, m, s, sep=':')
+for alvo in quantidade_segundos:
+    qtd = int(tempo_total / alvo)
+    resultado.append(str(qtd))
+    tempo_total -= qtd * alvo
+
+# Imprimir o resultado
+print(":".join(resultado))
