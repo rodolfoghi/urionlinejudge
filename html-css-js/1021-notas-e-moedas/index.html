@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notas e Moedas</title>
+</head>
+
+<body>
+    <form id="formulario">
+        <label for="valor">Valor:</label>
+        <input type="number" name="valor" id="valor" step="0.01" min="0" max="1000000.00" required>
+        <button type="submit" id="calcular">Calcular</button>
+    </form>
+
+    <section>
+        <h2>Notas</h2>
+        <ul id="resultado-notas">
+
+        </ul>
+    </section>
+
+    <section>
+        <h2>Moedas</h2>
+        <ul id="resultado-moedas">
+
+        </ul>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const notas = [100, 50, 20, 10, 5, 2];
+            const moedas = [1, 0.50, 0.25, 0.10, 0.05, 0.01];
+            const campoValor = document.querySelector('#valor');
+            const botaocalcular = document.querySelector('#calcular')
+            const resultadoNotas = document.querySelector('#resultado-notas');
+            const resultadoMoedas = document.querySelector('#resultado-moedas');
+
+            function mostraResultadoNota(qt, nota) {
+                let li = document.createElement('li');
+                li.innerText = `${qt} nota(s) de R$ ${nota.toFixed(2)}`;
+                resultadoNotas.appendChild(li);
+            }
+
+            function mostraResultadoMoeda(qt, moeda) {
+                let li = document.createElement('li');
+                li.innerText = `${qt} moeda(s) de R$ ${moeda.toFixed(2)}`;
+                resultadoMoedas.appendChild(li);
+            }
+
+            function limparResultados() {
+                resultadoNotas.innerHTML = '';
+                resultadoMoedas.innerHTML = '';
+            }
+
+            formulario.addEventListener('submit', (event) => {
+                event.preventDefault();
+                limparResultados();
+                let valor = parseFloat(campoValor.value);
+
+                notas.forEach((nota) => {
+                    let qt_nota = parseInt(valor / nota);
+                    mostraResultadoNota(qt_nota, nota);
+                    valor -= qt_nota * nota;
+                });
+
+                moedas.forEach((moeda) => {
+                    let qt_moeda = parseInt(valor / moeda);
+                    mostraResultadoMoeda(qt_moeda, moeda);
+                    valor -= qt_moeda * moeda;
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
