@@ -1,7 +1,7 @@
 # Leia 4 valores inteiros A, B, C e D.
 valores_lidos = input()
 
-valores_int = [int(x) for x in valores_lidos.split(" ")]
+valores_int = [int(x) for x in valores_lidos.split(' ')]
 a = valores_int[0]
 b = valores_int[1]
 c = valores_int[2]
@@ -23,7 +23,7 @@ valido = valido and a % 2 == 0
 
 # escrever a mensagem "Valores aceitos",
 # senão escrever "Valores nao aceitos".
-if (valido):
-    print("Valores aceitos")
+if valido:
+    print('Valores aceitos')
 else:
-    print("Valores nao aceitos")
+    print('Valores nao aceitos')
