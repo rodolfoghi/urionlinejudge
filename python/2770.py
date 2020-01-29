@@ -8,8 +8,7 @@ while True:
             pci_cliente = input().split()
             xi = int(pci_cliente[0])
             yi = int(pci_cliente[1])
-            #if xi <= x and yi <= y or xi <= y and yi <= x:
-            if xi * yi <= x * y:
+            if xi <= x and yi <= y or xi <= y and yi <= x:
                 print('Sim')
             else:
                 print('Nao')
