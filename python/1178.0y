@@ -1,0 +1,13 @@
+# -*- coding: utf-8 -*-
+array_len = 100
+
+x = float(input())
+
+n = [x]
+
+for i in range(array_len):
+    metade = n[i] / 2
+    n.append(metade)
+
+for i in range(array_len):
+    print('N[{}] = {:.4f}'.format(i, n[i]))
