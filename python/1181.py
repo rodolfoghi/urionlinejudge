@@ -1,23 +1,20 @@
-linha = int(input())
-operacao = input()
+l = int(input())
+t = input()
 
-matriz = []
 tamanho = 12 
+matriz = []
 for i in range(tamanho):
-    valores_linha = []
-    for i in range(tamanho):
-        valor = float(input())
-        valores_linha.append(valor)
-    matriz.append(valores_linha)
+    linha = []
+    for j in range(tamanho):
+        linha.append(float(input()))
+    matriz.append(linha)
 
-linha_resultado = matriz[linha]
 soma = 0
-for v in linha_resultado:
+for v in matriz[l]:
     soma += v
 
 resultado = soma
-if operacao == 'M':
-    resultado = soma / tamanho 
+if t == 'M':
+    resultado = soma / tamanho
 
 print('{:.1f}'.format(resultado))
-
